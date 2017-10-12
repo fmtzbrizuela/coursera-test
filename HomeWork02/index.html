@@ -1,0 +1,33 @@
+<!Doctype html>
+<html ng-app="ShoppingListCheckOff">
+<head>
+	<title>Shopping List Check Off</title>
+	<meta charset="utf-8">
+	<script src="angular.js"></script>
+	<script src="app.js"></script>
+	<style>
+#bigbox1 {width: 650px;}
+.izq {float: left; width: 300px;}
+	</style>
+</head>
+<body>
+<div id="bigbox1">
+	<h1>Shopping List Check Off</h1>
+	<div ng-controller="ToBuyController as tbctl" class="izq">
+		<h2>To Buy</h2>
+		<ol>
+			<li ng-repeat="item in tbctl.items">Buy {{item.qty}}  {{item.name}}
+				<button ng-click="tbctl.toBuy($index)">Bought</button></li>
+		</ol>
+		<h3 ng-if="tbctl.items.length == 0">Everything is bought!</h3>
+	</div>
+
+	<div ng-controller="AlreadyBoughtController as abctl" class="izq">
+		<h2>Already Bought:</h2>
+		<ol>
+			<li ng-repeat="item in abctl.items">Bought {{item.qty}} {{item.name}}</li>
+		</ol>
+		<h3 ng-if="abctl.items.length == 0">Nothing bought yet.</h3>
+	</div>
+
+</div>
